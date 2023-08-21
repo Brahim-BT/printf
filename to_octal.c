@@ -1,31 +1,26 @@
 #include "main.h"
 
-
 /**
-* to_octal - fill table with octal chars
-* @binary_handler: table
-* @octal_handler: table of octal
-* Return: octal_handler
-*/
-
-
+ * to_octal - this function will convert the binary form of to its octal representation.
+ * @binary_handler: table
+ * @octal_handler: octal table
+ * Return: octal_handler
+ */
 
 char *to_octal(char *octal_handler, char *binary_handler)
 {
-	int i = 0, octal_size, octal, j, last;
+	int m = 0, oct_sz, oct, n, last;
 	octal_handler[11] = 0;
-	for (i = 31, octal_size = 10; i >= 0; i--, octal_size--)
+	for (m = 31, oct_sz = 10; m >= 0; m--, oct_sz--)
 	{
-		if (i > 1)
-			last  = 4;
+		if (m > 1)
+			last = 4;
 		else
 			last = 2;
-		for (octal = 0, j = 1; j <= last; j *= 2, i--)
-			octal = ((*(binary_handler + i) - 48) * j) + octal;
-		i++;
-		octal_handler[octal_size] = octal + '0';
+		for (oct = 0, n = 1; n <= last; n *= 2, m--)
+			oct = ((*(binary_handler + m) - 48) * n) + oct;
+		m++;
+		octal_handler[oct_sz] = oct + '0';
 	}
-
-return (octal_handler);
+	return (octal_handler);
 }
-

@@ -1,52 +1,42 @@
 #include "main.h"
 /**
- * octal_handler - Convert INteger to octal
+ * octal_handler - thsi function will convert integers values to octals for us
  * @arge: arguments
  * @bffr: String
- * @buffer_size: Intger
- * Return: Intger
+ * @buffer_size: int
+ * Return: int
  */
 int octal_handler(va_list arge, char *bffr, unsigned int buffer_size)
 {
+	char *bin_handler;
 	int input = va_arg(arge, int);
-	int first_octal = 0, i = 0, counter = 0;
-	unsigned int negative = 0;
-	char *octal_handler;
-	char *binary_handler;
-	if (input == 0)
-	{
-		buffer_size = buffer_handler(bffr, '0', buffer_size);
-
-		return (1);
-	}
+	int first_octal = 0, i = 0, c = 0;
+	unsigned int neg = 0;
+	char *oct_handler;
 	if (input < 0)
 	{
 		input = (-1 * input) - 1;
-		negative = 1;
+		neg = 1;
 	}
-
-	binary_handler = malloc(sizeof(char) * (32 + 1));
-	binary_handler = to_binary(binary_handler, input, negative, 32);
-
-
-	octal_handler = malloc(sizeof(char) * (11 + 1));
-	octal_handler = to_octal(octal_handler, binary_handler);
-
-	while (octal_handler[i])
+	if (input == 0)
 	{
-		if (first_octal == 0 && octal_handler[i] != 48)
+		buffer_size = buffer_handler(bffr, '0', buffer_size);
+		return (1);
+	}
+	bin_handler = malloc(sizeof(char) * (32 + 1));
+	bin_handler = to_binary(bin_handler, input, neg, 32);
+	oct_handler = malloc(sizeof(char) * (11 + 1));
+	oct_handler = to_octal(oct_handler, bin_handler);
+	for (; oct_handler[i]; i++)
+	{
+		if (first_octal == 0 && oct_handler[i] != 48)
 			first_octal = 1;
 		if (first_octal == 1)
 		{
-			buffer_size = buffer_handler(bffr, *(octal_handler + i), buffer_size);
-			counter++;
+			buffer_size = buffer_handler(bffr, *(oct_handler + i), buffer_size);
+			c++;
 		}
-		i++;
 	}
-
-	free(octal_handler);
-
-
-	return (counter);
+	free(oct_handler);
+	return (c);
 }
-

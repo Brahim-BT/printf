@@ -1,50 +1,42 @@
 #include "main.h"
 /**
- * rot13_handler - function for rot13 string
+ * rot13_handler - this function will apply ROT13 encryption to the input string and adds the encrypted characters to the buffer.
  * @arge: type for va_list
  * @bffr: String
- * @buffer_size: Integer positive
- * Return: Integer
+ * @buffer_size: int
+ * Return: int
  */
-
-
 
 int rot13_handler(va_list arge, char *bffr, unsigned int buffer_size)
 {
-	char *value;
-	unsigned int i = 0, j = 0, k = 0;
-	char null_value[] = "(null)";
-	char tab1[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char tab2[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	unsigned int m = 0, n = 0, o = 0;
+	char alph_1[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char alph_2[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char nul_val[] = "(null)";
+	char *val;
 
-	value = va_arg(arge, char *);
-	if (value == 0)
-{
-		for (i = 0; null_value[i]; i++)
+	val = va_arg(arge, char *);
+	if (val == 0)
+	{
+		for (m = 0; nul_val[m]; m++)
 		{
-			buffer_size = buffer_handler(bffr, null_value[i], buffer_size);
+			buffer_size = buffer_handler(bffr, nul_val[m], buffer_size);
 		}
-
-
 		return (6);
-
-}
-	for (i = 0; *(value + i); i++)
-{
-		for (k = j = 0; tab1[j] != 0; j++)
+	}
+	for (m = 0; *(val + m); m++)
+	{
+		for (o = n = 0; alph_1[n] != 0; n++)
 		{
-			if (*(value + i) == tab1[j])
+			if (*(val + m) == alph_1[n])
 			{
-				k = 1;
-				buffer_size = buffer_handler(bffr, tab2[j], buffer_size);
+				o = 1;
+				buffer_size = buffer_handler(bffr, alph_2[n], buffer_size);
 				break;
 			}
 		}
-		if (k == 0)
-			 buffer_size = buffer_handler(bffr, *(value + i), buffer_size);
+		if (o == 0)
+			buffer_size = buffer_handler(bffr, *(val + m), buffer_size);
+	}
+	return (m);
 }
-
-
-	return (i);
-}
-

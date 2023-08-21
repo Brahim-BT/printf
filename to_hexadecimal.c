@@ -1,36 +1,32 @@
-
 #include "main.h"
+
 /**
-* to_hexadecimal - fill table with hexadecimal chars
-* @binary_buffer: table of binary_buffer
-* @hex: table of octal
-* @s: Integer
-* @l: Intger
-* Return: hexadecimal_handler
-*/
-
-
+ * to_hexadecimal - this function will converts the binary representation into a hexadecimal representation for us.
+ * @binary_buffer: table of binary_buffer
+ * @hex: octal table
+ * @s: int
+ * @l: int
+ * Return: hexadecimal_handler
+ */
 
 char *to_hexadecimal(char *binary_buffer, char *hexa, int s, int l)
 {
-	int i, j, laste, option;
+	int m, n, lst, op;
 
 	hexa[l] = '\0';
 	if (s)
-		laste = 55;
+		lst = 55;
 	else
-		laste = 87;
-	for (i = (l * 4) - 1; i >= 0; i--)
+		lst = 87;
+	for (m = (l * 4) - 1; m >= 0; m--)
 	{
-		for (option = 0, j = 1; j <= 8; j *= 2, i--)
-			option = ((*(binary_buffer + i) - '0') * j) + option;
-		i++;
-		if (option < 10)
-			hexa[i / 4] = option + 48;
+		for (op = 0, n = 1; n <= 8; n *= 2, m--)
+			op = ((*(binary_buffer + m) - '0') * n) + op;
+		m++;
+		if (op < 10)
+			hexa[m / 4] = op + 48;
 		else
-			hexa[i / 4] = option + laste;
+			hexa[m / 4] = op + lst;
 	}
-
-return (hexa);
+	return (hexa);
 }
-

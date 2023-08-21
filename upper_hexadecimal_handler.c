@@ -1,52 +1,44 @@
 #include "main.h"
 
-
 /**
- * upper_hexa_handler - Convert upper INteger to hexadecimal
+ * upper_hexa_handler - this function will convert an int into its corresponding uppercase hexadecimal representation and add it to a buffer for us.
  * @arge: arguments
  * @bffr: String
- * @buffer_size: Intger
- * Return: Intger
+ * @buffer_size: int
+ * Return: int
  */
-
-
 
 int upper_hexa_handler(va_list arge, char *bffr, unsigned int buffer_size)
 {
+	unsigned int neg = 0;
 	int input = va_arg(arge, int);
-	int first_hexa_dadecimal = 0, i = 0, cntr = 0;
-	unsigned int negative = 0;
-	char *hexa_d, *binary_buffer;
+	char *hex_d, *bin_bfr;
+	int frst_hex_dcml = 0, m = 0, c = 0;
 
+	if (input < 0)
+	{
+		input = (-1 * input) - 1;
+		neg = 1;
+	}
 	if (input == 0)
 	{
 		buffer_size = buffer_handler(bffr, '0', buffer_size);
 		return (1);
 	}
-	if (input < 0)
+	bin_bfr = malloc(sizeof(char) * (32 + 1));
+	bin_bfr = to_binary(bin_bfr, input, neg, 32);
+	hex_d = malloc(sizeof(char) * (8 + 1));
+	hex_d = to_hexadecimal(bin_bfr, hex_d, 1, 8);
+	for (; hex_d[m]; m++)
 	{
-		input = (-1 * input) - 1;
-		negative = 1;
-	}
-	binary_buffer = malloc(sizeof(char) * (32 + 1));
-	binary_buffer = to_binary(binary_buffer, input, negative, 32);
-	hexa_d = malloc(sizeof(char) * (8 + 1));
-	hexa_d = to_hexadecimal(binary_buffer, hexa_d, 1, 8);
-	while (hexa_d[i])
-	{
-		if (first_hexa_dadecimal == 0 && hexa_d[i] != 48)
-			first_hexa_dadecimal = 1;
-		if (first_hexa_dadecimal)
+		if (frst_hex_dcml == 0 && hex_d[m] != 48)
+			frst_hex_dcml = 1;
+		if (frst_hex_dcml)
 		{
-			buffer_size = buffer_handler(bffr, hexa_d[i], buffer_size);
-			cntr++;
+			buffer_size = buffer_handler(bffr, hex_d[m], buffer_size);
+			c++;
 		}
-		i++;
 	}
-
-	free(hexa_d);
-
-return (cntr);
-
+	free(hex_d);
+	return (c);
 }
-

@@ -1,32 +1,29 @@
 #include "main.h"
 /**
- * string_handler - function for string
+ * string_handler - this function will be responsible for formatting and printing strings for us.
  * @arge: type for va_list
  * @bffr: String
- * @buffer_size: Integer positive
- * Return: Integer
+ * @buffer_size: int
+ * Return: int
  */
 int string_handler(va_list arge, char *bffr, unsigned int buffer_size)
 {
-	char *value;
-	unsigned int i = 0;
-	char null_value[] = "(null)";
+	char *val;
+	unsigned int m = 0;
+	char nul_val[] = "(null)";
 
-	value = va_arg(arge, char *);
-	if (value == 0)
+	val = va_arg(arge, char *);
+	if (val == 0)
 	{
-		for (i = 0; null_value[i]; i++)
+		for (m = 0; nul_val[m]; m++)
 		{
-			buffer_size = buffer_handler(bffr, null_value[i], buffer_size);
+			buffer_size = buffer_handler(bffr, nul_val[m], buffer_size);
 		}
 		return (6);
 	}
-	for (i = 0; *(value + i); i++)
+	for (m = 0; *(val + m); m++)
 	{
-		buffer_size = buffer_handler(bffr, value[i], buffer_size);
+		buffer_size = buffer_handler(bffr, val[m], buffer_size);
 	}
-
-	 return (i);
-
+	return (m);
 }
-

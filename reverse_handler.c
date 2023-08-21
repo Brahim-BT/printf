@@ -1,45 +1,35 @@
 #include "main.h"
+
 /**
- * reverse_handler - function for reverse string
+ * reverse_handler - this function will reverse a string for us.
  * @arge: type for va_list
  * @bffr: String
- * @buffer_size: Integer positive
- * Return: Integer
+ * @buffer_size: int
+ * Return: int
  */
-
-
-
-
 
 int reverse_handler(va_list arge, char *bffr, unsigned int buffer_size)
 {
-	char *value;
-	unsigned int i = 0;
-	int j = 0;
-	char null_value[] = "(null)";
+	char nul_val[] = "(null)";
+	char *val;
+	int n = 0;
+	unsigned int m = 0;
 
-	value = va_arg(arge, char *);
-	if (value == 0)
+	val = va_arg(arge, char *);
+	if (val == 0)
 	{
-		for (i = 0; null_value[i]; i++)
+		for (m = 0; nul_val[m]; m++)
 		{
-			buffer_size = buffer_handler(bffr, null_value[i], buffer_size);
+			buffer_size = buffer_handler(bffr, nul_val[m], buffer_size);
 		}
-
-
-		  return (6);
+		return (6);
 	}
-	for (i = 0; *(value + i); i++)
+	for (m = 0; *(val + m); m++)
 		;
-	j = i - 1;
-	for (; j >= 0; j--)
+	n = m - 1;
+	for (; n >= 0; n--)
 	{
-		buffer_size = buffer_handler(bffr, value[j], buffer_size);
+		buffer_size = buffer_handler(bffr, val[n], buffer_size);
 	}
-
-
-
-
-	  return (i);
+	return (m);
 }
-

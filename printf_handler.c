@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_handler - pointer to function
+ * print_handler - this is a pointer to function
  * @sp: String
  * @indx: Integer
  * Return: Integer
@@ -52,4 +52,3 @@ int (*print_handler(const char *sp, int indx))(va_list, char *, unsigned int)
 	}
 	return (con[i].func);
 }
-
