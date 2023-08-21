@@ -9,9 +9,9 @@
 
 
 /**
- * struct option - Stucture for Option.
+ * struct option - building a stucture for Option.
  * @flage: String.
- * @func: Pointer to function.
+ * @func: a pointrt to a function.
  * Description: Define a new type struct opt whit flage and func.
  */
 

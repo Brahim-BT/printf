@@ -1,40 +1,37 @@
 #include "main.h"
 /**
- * ascii_handler - Convert value ascii < 32 or > 127 to hexadecimal.
- * @arge: arguments
+ * ascii_handler - this function will onvert value ascii < 32 or > 127 to hexadecimal for us.
+ * @arge: the arguments to be given to the fucntion
  * @bffr: String
- * @buffer_size: Intger
- * Return: Intger
+ * @buffer_size: int
+ * Return: int
  */
- int ascii_handler(va_list arge, char *bffr, unsigned int buffer_size)
+int ascii_handler(va_list arge, char *bffr, unsigned int buffer_size)
 {
-	unsigned char *input = va_arg(arge, unsigned char *);
 	unsigned int i = 0, con, sum = 0;
-	char *hexa_d, *binary_buffer;
+	char *hex_d, *bin_buf;
+	unsigned char *input = va_arg(arge, unsigned char *);
 
-	binary_buffer = malloc(sizeof(char) * (32 + 1));
-	hexa_d = malloc(sizeof(char) * (8 + 1));
+	bin_buf = malloc(sizeof(char) * (32 + 1));
+	hex_d = malloc(sizeof(char) * (8 + 1));
 
-	while (input[i])
-{
+	for (; input[i]; i++)
+	{
 		if (input[i] < 32 || input[i] >= 127)
 		{
 			buffer_size = buffer_handler(bffr, '\\', buffer_size);
 			buffer_size = buffer_handler(bffr, 'x', buffer_size);
 			con = input[i];
-			binary_buffer = to_binary(binary_buffer, con, 0, 32);
-			hexa_d = to_hexadecimal(binary_buffer, hexa_d, 1, 8);
+			bin_buf = to_binary(bin_buf, con, 0, 32);
+			hex_d = to_hexadecimal(bin_buf, hex_d, 1, 8);
 
-			buffer_size = buffer_handler(bffr, hexa_d[6], buffer_size);
-			buffer_size = buffer_handler(bffr, hexa_d[7], buffer_size);
+			buffer_size = buffer_handler(bffr, hex_d[6], buffer_size);
+			buffer_size = buffer_handler(bffr, hex_d[7], buffer_size);
 			sum += 3;
 		}
 		else
 			buffer_size = buffer_handler(bffr, input[i], buffer_size);
-		i++;
-
-}
-	free(hexa_d);
+	}
+	free(hex_d);
 	return (i + sum);
 }
-

@@ -1,8 +1,5 @@
 #include "main.h"
 
-
-
-
 /**
  * binary_handler - Convert INteger to binary
  * @arge: arguments
@@ -10,9 +7,7 @@
  * @buffer_size: Intger
  * Return: Intger
  */
- 
- 
- 
+
 int binary_handler(va_list arge, char *bffr, unsigned int buffer_size)
 {
 	int input = va_arg(arge, int);
@@ -34,7 +29,7 @@ int binary_handler(va_list arge, char *bffr, unsigned int buffer_size)
 	binary_handler = malloc(sizeof(char) * (32 + 1));
 	binary_handler = to_binary(binary_handler, input, negative, 32);
 
-	while (binary_handler[i])
+	for (; binary_handler[i]; i++)
 	{
 		if (first_bit == 0 && binary_handler[i] == '1')
 			first_bit = 1;
@@ -43,9 +38,7 @@ int binary_handler(va_list arge, char *bffr, unsigned int buffer_size)
 			buffer_size = buffer_handler(bffr, *(binary_handler + i), buffer_size);
 			counter++;
 		}
-		i++;
 	}
 	free(binary_handler);
 	return (counter);
 }
-

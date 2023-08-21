@@ -1,9 +1,9 @@
 #include "main.h"
 /**
- * flags - Function for flags
+ * flags - this function will be for flags
  * @s: String
- * @indx: Integer
- * Return: Integer
+ * @indx: int
+ * Return: int
  */
 int flags(const char *s, int indx)
 {
@@ -22,11 +22,10 @@ int flags(const char *s, int indx)
 		{"%", per_handler},
 		{"r", reverse_handler},
 		{"R", rot13_handler},
-		{NULL, NULL}
-	};
+		{NULL, NULL}};
 	int i = 0, cmpt = 0, f_indx;
 	f_indx = indx;
-	while (pr[i].flage)
+	for (; pr[i].flage;)
 	{
 		if (s[indx] == pr[i].flage[cmpt])
 		{
@@ -46,7 +45,5 @@ int flags(const char *s, int indx)
 		}
 	}
 
-
-        return (cmpt);
+	return (cmpt);
 }
-

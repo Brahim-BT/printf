@@ -2,11 +2,11 @@
 
 
 /**
- * di_handler - Function di_handler
+ * di_handler - this function will be responsible for formatting and printing signed integer values for us.
  * @arge: argumerts for type va_list
  * @bffr: String
- * @buffer_size: unsigned Integer
- * Return: Integer
+ * @buffer_size: unsigned int
+ * Return: int
  */
 
 int di_handler(va_list arge, char *bffr, unsigned int buffer_size)
@@ -42,4 +42,3 @@ int di_handler(va_list arge, char *bffr, unsigned int buffer_size)
 	}
 	return (i + negative);
 }
-

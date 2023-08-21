@@ -21,7 +21,7 @@ int main(void)
     printf("Length:[%d, %i]\n", len2, len2);
     _printf("Negative:[%d]\n", -762534);
     printf("Negative:[%d]\n", -762534);
-    _printf("Negative:[%b]\n", -15);
+    _printf("Negative:[%d]\n", -15);
     _printf("Unsigned:[%u]\n", ui);
     printf("Unsigned:[%u]\n", ui);
     _printf("Unsigned octal:[%o]\n", -650);
@@ -39,6 +39,7 @@ int main(void)
     len2 = printf("Percent:[%%]\n");
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
+    printf("Unknown:[%r]\n");
     _printf("Unknown:[%r]\n");
 
 

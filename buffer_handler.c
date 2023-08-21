@@ -2,11 +2,11 @@
 
 
 /**
- * buffer_handler - concatinating function
+ * buffer_handler - this function will concatinating for us
  * @bffr: String
  * @ch: char
- * @buffer_size: unsigned Intger
- * Return: unsigned Intger
+ * @buffer_size: unsigned int
+ * Return: unsigned int
  */
  
  
