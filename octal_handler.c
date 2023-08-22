@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * octal_handler - thsi function will convert integers values to octals for us
+ * octal_handler - thsi function will convert integers values to octals for us.
  * @arge: arguments
  * @bffr: String
  * @buffer_size: int
@@ -10,7 +10,7 @@ int octal_handler(va_list arge, char *bffr, unsigned int buffer_size)
 {
 	char *bin_handler;
 	int input = va_arg(arge, int);
-	int first_octal = 0, i = 0, c = 0;
+	int first_octal = 0, m = 0, c = 0;
 	unsigned int neg = 0;
 	char *oct_handler;
 	if (input < 0)
@@ -27,13 +27,13 @@ int octal_handler(va_list arge, char *bffr, unsigned int buffer_size)
 	bin_handler = to_binary(bin_handler, input, neg, 32);
 	oct_handler = malloc(sizeof(char) * (11 + 1));
 	oct_handler = to_octal(oct_handler, bin_handler);
-	for (; oct_handler[i]; i++)
+	for (; oct_handler[m]; m++)
 	{
-		if (first_octal == 0 && oct_handler[i] != 48)
+		if (first_octal == 0 && oct_handler[m] != 48)
 			first_octal = 1;
 		if (first_octal == 1)
 		{
-			buffer_size = buffer_handler(bffr, *(oct_handler + i), buffer_size);
+			buffer_size = buffer_handler(bffr, *(oct_handler + m), buffer_size);
 			c++;
 		}
 	}

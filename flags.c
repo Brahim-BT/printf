@@ -23,27 +23,26 @@ int flags(const char *s, int indx)
 		{"r", reverse_handler},
 		{"R", rot13_handler},
 		{NULL, NULL}};
-	int i = 0, cmpt = 0, f_indx;
+	int m = 0, c = 0, f_indx;
 	f_indx = indx;
-	for (; pr[i].flage;)
+	for (; pr[m].flage;)
 	{
-		if (s[indx] == pr[i].flage[cmpt])
+		if (s[indx] == pr[m].flage[c])
 		{
-			if (pr[i].flage[cmpt + 1] != '\0')
+			if (pr[m].flage[c + 1] != '\0')
 			{
 				indx++;
-				cmpt++;
+				c++;
 			}
 			else
 				break;
 		}
 		else
 		{
-			cmpt = 0;
-			i++;
+			c = 0;
+			m++;
 			indx = f_indx;
 		}
 	}
-
-	return (cmpt);
+	return (c);
 }

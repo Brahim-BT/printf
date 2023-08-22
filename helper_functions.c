@@ -6,9 +6,9 @@
  */
 int char_len(char *c)
 {
-	int i = 0;
+	int m = 0;
 
-	while (c[i])
-		i++;
-	return (i);
+	while (c[m])
+		m++;
+	return (m);
 }
