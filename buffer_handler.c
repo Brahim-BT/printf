@@ -2,7 +2,7 @@
 
 
 /**
- * buffer_handler - this function will concatinating for us
+ * buffer_handler - this function will concatinating for us.
  * @bffr: String
  * @ch: char
  * @buffer_size: unsigned int

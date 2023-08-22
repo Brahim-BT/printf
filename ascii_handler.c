@@ -8,20 +8,20 @@
  */
 int ascii_handler(va_list arge, char *bffr, unsigned int buffer_size)
 {
-	unsigned int i = 0, con, sum = 0;
 	char *hex_d, *bin_buf;
+	unsigned int m = 0, con, sum = 0;
 	unsigned char *input = va_arg(arge, unsigned char *);
 
 	bin_buf = malloc(sizeof(char) * (32 + 1));
 	hex_d = malloc(sizeof(char) * (8 + 1));
 
-	for (; input[i]; i++)
+	for (; input[m]; m++)
 	{
-		if (input[i] < 32 || input[i] >= 127)
+		if (input[m] < 32 || input[m] >= 127)
 		{
 			buffer_size = buffer_handler(bffr, '\\', buffer_size);
 			buffer_size = buffer_handler(bffr, 'x', buffer_size);
-			con = input[i];
+			con = input[m];
 			bin_buf = to_binary(bin_buf, con, 0, 32);
 			hex_d = to_hexadecimal(bin_buf, hex_d, 1, 8);
 
@@ -30,8 +30,8 @@ int ascii_handler(va_list arge, char *bffr, unsigned int buffer_size)
 			sum += 3;
 		}
 		else
-			buffer_size = buffer_handler(bffr, input[i], buffer_size);
+			buffer_size = buffer_handler(bffr, input[m], buffer_size);
 	}
 	free(hex_d);
-	return (i + sum);
+	return (m + sum);
 }

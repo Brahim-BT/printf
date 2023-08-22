@@ -1,19 +1,19 @@
 #include "main.h"
 
 /**
- * binary_handler - Convert INteger to binary
+ * binary_handler - this function will convert integer to binary for us.
  * @arge: arguments
  * @bffr: String
- * @buffer_size: Intger
- * Return: Intger
+ * @buffer_size: int
+ * Return: int
  */
 
 int binary_handler(va_list arge, char *bffr, unsigned int buffer_size)
 {
 	int input = va_arg(arge, int);
-	int first_bit = 0, i = 0, counter = 0;
-	unsigned int negative = 0;
-	char *binary_handler;
+	int first_bit = 0, m = 0, c = 0;
+	unsigned int neg = 0;
+	char *bin_handler;
 
 	if (input == 0)
 	{
@@ -23,22 +23,22 @@ int binary_handler(va_list arge, char *bffr, unsigned int buffer_size)
 	if (input < 0)
 	{
 		input = (-1 * input) - 1;
-		negative = 1;
+		neg = 1;
 	}
 
-	binary_handler = malloc(sizeof(char) * (32 + 1));
-	binary_handler = to_binary(binary_handler, input, negative, 32);
+	bin_handler = malloc(sizeof(char) * (32 + 1));
+	bin_handler = to_binary(bin_handler, input, neg, 32);
 
-	for (; binary_handler[i]; i++)
+	for (; bin_handler[m]; m++)
 	{
-		if (first_bit == 0 && binary_handler[i] == '1')
+		if (first_bit == 0 && bin_handler[m] == '1')
 			first_bit = 1;
 		if (first_bit == 1)
 		{
-			buffer_size = buffer_handler(bffr, *(binary_handler + i), buffer_size);
-			counter++;
+			buffer_size = buffer_handler(bffr, *(bin_handler + m), buffer_size);
+			c++;
 		}
 	}
-	free(binary_handler);
-	return (counter);
+	free(bin_handler);
+	return (c);
 }
